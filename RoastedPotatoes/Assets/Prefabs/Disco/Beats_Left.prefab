@@ -53,7 +53,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7590225596270548659, guid: a98660d0f5ce0754fa64a30dee3497ba, type: 3}
       propertyPath: m_Name
-      value: Beats
+      value: Beats_Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 7590225596270548659, guid: a98660d0f5ce0754fa64a30dee3497ba, type: 3}
+      propertyPath: m_TagString
+      value: Beats_Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 7590225596270548659, guid: a98660d0f5ce0754fa64a30dee3497ba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a98660d0f5ce0754fa64a30dee3497ba, type: 3}
