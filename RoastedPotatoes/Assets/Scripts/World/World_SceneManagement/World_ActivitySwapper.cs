@@ -9,7 +9,7 @@ public class World_ActivitySwapper : MonoBehaviour
 
     public void LoadActivity(string activityScene)
     {
-        currentDayScene = SceneManager.GetActiveScene().name;
+        currentDayScene = "World_NoPlayer";
 
         SceneManager.LoadScene(activityScene);
     }
