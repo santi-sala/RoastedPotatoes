@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class ArrowMovement : MonoBehaviour
 {
+    public static ArrowMovement Instance { get; private set; }
     [SerializeField] private float _beatTempo;
-    // Start is called before the first frame update
+    private bool _isPlaying = false;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
         _beatTempo /= 60f;
@@ -14,6 +21,14 @@ public class ArrowMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position -= new Vector3(0f, _beatTempo * Time.deltaTime);
+        if(_isPlaying)
+        {
+            transform.position -= new Vector3(0f, _beatTempo * Time.deltaTime);
+        }
+    }
+
+    public void StartArrowMovements()
+    {
+        _isPlaying = true;
     }
 }
