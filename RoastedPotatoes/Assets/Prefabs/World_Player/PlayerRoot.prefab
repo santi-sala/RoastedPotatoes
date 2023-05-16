@@ -182,8 +182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10ff3e7f0aad56248a0559bfcb7e0398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sideWaysMoveSpeed: 3
-  _moveSpeed: 5
+  _sideWaysMoveSpeed: 1
+  _moveSpeed: 1.5
 --- !u!114 &8537696081489043372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6355468413604701640}
   - component: {fileID: 8599384835082672802}
+  - component: {fileID: 1441515081561414388}
   m_Layer: 0
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -259,7 +260,7 @@ Transform:
   m_GameObject: {fileID: 3165089509696743664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 3.5, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 669322668812456536}
@@ -317,3 +318,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1441515081561414388
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3165089509696743664}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 722a80a1ba793454791550182e6b7809, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

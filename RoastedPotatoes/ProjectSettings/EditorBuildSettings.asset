@@ -12,9 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/World.unity
     guid: 36489c73eeed96c4c9dbc7e648722b0f
   - enabled: 1
-    path: Assets/Scenes/World_Mo.unity
-    guid: cb5fb0f194c921742a41ff6d525517d6
+    path: Assets/Scenes/World_NoPlayer.unity
+    guid: 9ba3252d148010d439423509aea57950
   - enabled: 1
-    path: Assets/Scenes/World_Tu.unity
-    guid: b716fed51f5b8df44b482aeedefbd661
+    path: Assets/Scenes/DiscoScene.unity
+    guid: 9ffe7af0945f39e498fe1b38282e0e90
+  - enabled: 1
+    path: Assets/Scenes/SkiingScene.unity
+    guid: fdd0308042b50cb4b8478e2645cbc118
   m_configObjects: {}

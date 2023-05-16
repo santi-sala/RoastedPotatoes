@@ -311,6 +311,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerRoot
       objectReference: {fileID: 0}
+    - target: {fileID: 8599384835082672802, guid: 58a5bae7a5b110241a953b78abefd8e7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7e594bc4c858d204c9f4ad4a3ade8ca1, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58a5bae7a5b110241a953b78abefd8e7, type: 3}
 --- !u!1001 &4133740058344193739
@@ -320,6 +324,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1827669275, guid: 270e61367e24b6241b4e6fba281c8b82, type: 3}
+      propertyPath: activitySceneName
+      value: DiscoScene
+      objectReference: {fileID: 0}
     - target: {fileID: 4857401273038903914, guid: 270e61367e24b6241b4e6fba281c8b82, type: 3}
       propertyPath: m_Name
       value: InteractionTrigger
@@ -330,11 +338,68 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8465139607228699254, guid: 270e61367e24b6241b4e6fba281c8b82, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.45
+      value: -13.01
       objectReference: {fileID: 0}
     - target: {fileID: 8465139607228699254, guid: 270e61367e24b6241b4e6fba281c8b82, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465139607228699254, guid: 270e61367e24b6241b4e6fba281c8b82, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465139607228699254, guid: 270e61367e24b6241b4e6fba281c8b82, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465139607228699254, guid: 270e61367e24b6241b4e6fba281c8b82, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465139607228699254, guid: 270e61367e24b6241b4e6fba281c8b82, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465139607228699254, guid: 270e61367e24b6241b4e6fba281c8b82, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465139607228699254, guid: 270e61367e24b6241b4e6fba281c8b82, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465139607228699254, guid: 270e61367e24b6241b4e6fba281c8b82, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465139607228699254, guid: 270e61367e24b6241b4e6fba281c8b82, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 270e61367e24b6241b4e6fba281c8b82, type: 3}
+--- !u!1001 &6748279145824190940
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4857401273038903914, guid: 270e61367e24b6241b4e6fba281c8b82, type: 3}
+      propertyPath: m_Name
+      value: InteractionTrigger (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465139607228699254, guid: 270e61367e24b6241b4e6fba281c8b82, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465139607228699254, guid: 270e61367e24b6241b4e6fba281c8b82, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465139607228699254, guid: 270e61367e24b6241b4e6fba281c8b82, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.1
       objectReference: {fileID: 0}
     - target: {fileID: 8465139607228699254, guid: 270e61367e24b6241b4e6fba281c8b82, type: 3}
       propertyPath: m_LocalPosition.z
