@@ -20,7 +20,8 @@ public class SongCompleted : MonoBehaviour
         {
             _txtScore.text = UI_Score.Instance.GetFinalScore();
             Show();
-            GameObject.Find("PlayerRoot").GetComponent<World_ActivityInteraction>().WorldLoadPrep();
+
+            Invoke("LoadWorld", 5);
         }
         
     }
@@ -28,6 +29,11 @@ public class SongCompleted : MonoBehaviour
     private void Show()
     {
         _completedUI.SetActive(true);
+    }
+
+    private void LoadWorld()
+    {
+        GameObject.Find("PlayerRoot").GetComponent<World_ActivityInteraction>().WorldLoadPrep();
     }
 
     private void Hide()

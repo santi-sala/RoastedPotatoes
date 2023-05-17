@@ -32,7 +32,7 @@ public class Beats_Down : MonoBehaviour
         {
             PlayerInput.Instance.OnDownPressed -= Instance_OnDownPressed;
             _canBepressed = false;
-            Debug.Log("It can be pressed");
+            //Debug.Log("It can be pressed");
             DiscoManager.Instance.NoteHit();
             Destroy(gameObject);
         }
