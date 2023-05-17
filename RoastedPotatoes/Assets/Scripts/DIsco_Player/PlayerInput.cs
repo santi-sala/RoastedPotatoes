@@ -4,17 +4,32 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     public static PlayerInput Instance { get; private set; }
+
     public event EventHandler OnLeftPressed;
-    //public event EventHandler OnRightPressed;
+    public event EventHandler OnInteractionPressed;
+    public event EventHandler OnRightPressed;
     //public event EventHandler OnUpPressed;
     //public event EventHandler OnDownPressed;
 
-    [SerializeField] private GameObject _left;
-    private DefaultInput _playerActions;
-    private SpriteRenderer _leftColor;
-   
+    [SerializeField] private GameObject _upButton;
+    [SerializeField] private GameObject _downButton;
 
-    // Start is called before the first frame update
+    [SerializeField] private GameObject _leftButton;
+    [SerializeField] private Sprite _leftSpriteDefault;
+    [SerializeField] private Sprite _leftSpritePressed;
+
+    [SerializeField] private GameObject _rightButton;
+    [SerializeField] private Sprite _rightSpriteDefault;
+    [SerializeField] private Sprite _rightSpritePressed;
+
+
+    private DefaultInput _playerActions;
+
+    private SpriteRenderer _leftSpriteRenderer;
+    private SpriteRenderer _rightSpriteRenderer;
+
+
+
     void Awake()
     {
         Instance = this;
@@ -23,52 +38,38 @@ public class PlayerInput : MonoBehaviour
     }
     private void Start()
     {
-        _leftColor  = _left.GetComponent<SpriteRenderer>();
-        //_playerActions.ControlScheme.Movement_Left.performed += Movement_Left_performed;
         _playerActions.ControlScheme.Movement_Left.started += Movement_Left_started;
+        _playerActions.ControlScheme.Movement_Right.started += Movement_Right_started;
+        _playerActions.ControlScheme.Interaction.performed += Interaction_performed;
         
+        _leftSpriteRenderer  = _leftButton.GetComponent<SpriteRenderer>();
+        _rightSpriteRenderer = _rightButton.GetComponent<SpriteRenderer>();
+
     }
 
-   
-    
+    private void Movement_Right_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        _rightSpriteRenderer.sprite = _rightSpritePressed;
+    }
+
+
     private void Movement_Left_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        _leftColor.color = new Color(0, 0, 0);
-        //Debug.Log("STARTED");
+        _leftSpriteRenderer.sprite = _leftSpritePressed;
         OnLeftPressed?.Invoke(this, EventArgs.Empty);
-
-        //_playerActions.ControlScheme.Movement_Left.WasReleasedThisFrame
+    }
+    private void Interaction_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        OnInteractionPressed?.Invoke(this, EventArgs.Empty);
     }
     
-    /*
-    private void Movement_Left_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
-    {
-        
-        _leftColor.color = new Color(255, 0, 0);
-        Debug.Log("Performed");
-    }
-    */
-
-    // Update is called once per frame
     void Update()
     {
 
        if( _playerActions.ControlScheme.Movement_Left.WasReleasedThisFrame())
-        {
-            //Debug.Log("sup");            
-            _leftColor.color = new Color(255, 0, 0);
+        {        
+            _leftSpriteRenderer.sprite = _leftSpriteDefault;
         }
-        /*
-        if (_playerActions.ControlScheme.Movement_Left.WasReleasedThisFrame() )
-        {
-            //Debug.Log("sup!!");
-            _leftColor.color = new Color(0,0,0);
-            OnLeftPressed?.Invoke(this, EventArgs.Empty);
-        }
-        else
-        {
-            _leftColor.color = new Color(255, 0, 0);
-        } 
-        */
+        
     }
 }
