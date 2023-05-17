@@ -30,4 +30,9 @@ public class UI_Score : MonoBehaviour
     {
         _txtCurrentMultiplier.text = "Multiplier: x" + multiplier.ToString();
     }
+
+    public string GetFinalScore()
+    {
+        return _txtCurrentScore.text;
+    }
 }

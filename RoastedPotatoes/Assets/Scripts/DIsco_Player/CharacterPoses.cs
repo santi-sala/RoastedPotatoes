@@ -28,8 +28,13 @@ public class CharacterPoses : MonoBehaviour
             if (flipPose == 0)
             {
                 _spriteRenderer.flipX = true;
+                //Debug.Log("flipped");
             }
-            
+            else
+            {
+                _spriteRenderer.flipX = false;
+            }
+
         }
         else
         {
@@ -37,6 +42,10 @@ public class CharacterPoses : MonoBehaviour
             if (flipPose == 0)
             {
                 _spriteRenderer.flipX = true;
+            }
+            else
+            {
+                _spriteRenderer.flipX = false;
             }
         }
         

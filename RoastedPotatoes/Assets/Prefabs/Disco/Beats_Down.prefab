@@ -13,15 +13,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7590225596270548656, guid: a98660d0f5ce0754fa64a30dee3497ba, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.6
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7590225596270548656, guid: a98660d0f5ce0754fa64a30dee3497ba, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.6
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7590225596270548656, guid: a98660d0f5ce0754fa64a30dee3497ba, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.6
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7590225596270548656, guid: a98660d0f5ce0754fa64a30dee3497ba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -76,6 +76,14 @@ PrefabInstance:
       value: Beats_Down
       objectReference: {fileID: 0}
     - target: {fileID: 7590225596270548663, guid: a98660d0f5ce0754fa64a30dee3497ba, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7590225596270548663, guid: a98660d0f5ce0754fa64a30dee3497ba, type: 3}
+      propertyPath: m_Size.y
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7590225596270548663, guid: a98660d0f5ce0754fa64a30dee3497ba, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1.5200001
       objectReference: {fileID: 0}
@@ -85,3 +93,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a98660d0f5ce0754fa64a30dee3497ba, type: 3}
+--- !u!1 &2295976483915502945 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7590225596270548659, guid: a98660d0f5ce0754fa64a30dee3497ba, type: 3}
+  m_PrefabInstance: {fileID: 8541384030944723922}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &21929777479050806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2295976483915502945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d247729ebd15cb4093ae6f44beca929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canBepressed: 0
