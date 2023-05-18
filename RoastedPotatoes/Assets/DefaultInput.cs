@@ -71,6 +71,15 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Alternate"",
+                    ""type"": ""Button"",
+                    ""id"": ""f7250ad4-6eef-487e-9703-a4d279619296"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +181,17 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                     ""action"": ""Movement_Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ef51f555-4e87-4e43-aed6-b7a88c5c7c3a"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Alternate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -185,6 +205,7 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
         m_ControlScheme_Movement_Left = m_ControlScheme.FindAction("Movement_Left", throwIfNotFound: true);
         m_ControlScheme_Movement_Right = m_ControlScheme.FindAction("Movement_Right", throwIfNotFound: true);
         m_ControlScheme_Interaction = m_ControlScheme.FindAction("Interaction", throwIfNotFound: true);
+        m_ControlScheme_Alternate = m_ControlScheme.FindAction("Alternate", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -249,6 +270,7 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_ControlScheme_Movement_Left;
     private readonly InputAction m_ControlScheme_Movement_Right;
     private readonly InputAction m_ControlScheme_Interaction;
+    private readonly InputAction m_ControlScheme_Alternate;
     public struct ControlSchemeActions
     {
         private @DefaultInput m_Wrapper;
@@ -258,6 +280,7 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
         public InputAction @Movement_Left => m_Wrapper.m_ControlScheme_Movement_Left;
         public InputAction @Movement_Right => m_Wrapper.m_ControlScheme_Movement_Right;
         public InputAction @Interaction => m_Wrapper.m_ControlScheme_Interaction;
+        public InputAction @Alternate => m_Wrapper.m_ControlScheme_Alternate;
         public InputActionMap Get() { return m_Wrapper.m_ControlScheme; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -282,6 +305,9 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                 @Interaction.started -= m_Wrapper.m_ControlSchemeActionsCallbackInterface.OnInteraction;
                 @Interaction.performed -= m_Wrapper.m_ControlSchemeActionsCallbackInterface.OnInteraction;
                 @Interaction.canceled -= m_Wrapper.m_ControlSchemeActionsCallbackInterface.OnInteraction;
+                @Alternate.started -= m_Wrapper.m_ControlSchemeActionsCallbackInterface.OnAlternate;
+                @Alternate.performed -= m_Wrapper.m_ControlSchemeActionsCallbackInterface.OnAlternate;
+                @Alternate.canceled -= m_Wrapper.m_ControlSchemeActionsCallbackInterface.OnAlternate;
             }
             m_Wrapper.m_ControlSchemeActionsCallbackInterface = instance;
             if (instance != null)
@@ -301,6 +327,9 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                 @Interaction.started += instance.OnInteraction;
                 @Interaction.performed += instance.OnInteraction;
                 @Interaction.canceled += instance.OnInteraction;
+                @Alternate.started += instance.OnAlternate;
+                @Alternate.performed += instance.OnAlternate;
+                @Alternate.canceled += instance.OnAlternate;
             }
         }
     }
@@ -312,5 +341,6 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
         void OnMovement_Left(InputAction.CallbackContext context);
         void OnMovement_Right(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
+        void OnAlternate(InputAction.CallbackContext context);
     }
 }
