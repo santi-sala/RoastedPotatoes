@@ -11,11 +11,13 @@ public class World_ActivitySwapper : MonoBehaviour
     {
         currentDayScene = "World_NoPlayer";
 
-        SceneManager.LoadScene(activityScene);
+        SceneManager.LoadSceneAsync(activityScene);
+        SceneManager.LoadSceneAsync("TransitioningScene", LoadSceneMode.Additive);
     }
 
     public void LoadWorld()
     {
-        SceneManager.LoadScene(currentDayScene);
+        SceneManager.LoadSceneAsync(currentDayScene);
+        SceneManager.LoadSceneAsync("TransitioningScene", LoadSceneMode.Additive);
     }
 }

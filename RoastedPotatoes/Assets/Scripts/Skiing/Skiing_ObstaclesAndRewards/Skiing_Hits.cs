@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class Skiing_Hits : MonoBehaviour
 {
+    bool active = true;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Invoke("DeleteHitbox", 0.5f);
+        if (active)
+        {
+            Skiing_Rewards.pointsCount -= 1000;
+            Invoke("DeleteHitbox", 0.5f);
+        }
     }
 
     void DeleteHitbox()
