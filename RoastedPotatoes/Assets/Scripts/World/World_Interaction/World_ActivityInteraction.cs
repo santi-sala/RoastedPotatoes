@@ -31,6 +31,15 @@ public class World_ActivityInteraction : World_ActivitySwapper
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Interactable"))
+        {
+            _activitySceneName = null;
+            _inTrigger = false;
+        }
+    }
+
     private void Update()
     {
         if (_inTrigger && _playerActions.ControlScheme.Interaction.triggered)
@@ -43,7 +52,7 @@ public class World_ActivityInteraction : World_ActivitySwapper
     {
         _inTrigger = false;
         _playerMovement.DisableMovement();
-        
+           
         LoadActivity(_activitySceneName);
 
         _playerSpriteRenderer.enabled = false;
