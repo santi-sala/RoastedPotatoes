@@ -55,6 +55,11 @@ public class World_ActivityInteraction : World_ActivitySwapper
            
         LoadActivity(_activitySceneName);
 
+        Invoke("MiddleOfTransistion", 1.5f);
+    }
+
+    void MiddleOfTransistion()
+    {
         _playerSpriteRenderer.enabled = false;
         _playerCamera.GetComponent<Camera>().enabled = false;
         _playerCamera.GetComponent<AudioListener>().enabled = false;
