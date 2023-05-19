@@ -39,7 +39,7 @@ public class Skiing_StartStop : MonoBehaviour
 
     void StartBeginningSequence(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-
+        _playerActions.ControlScheme.Interaction.started -= StartBeginningSequence;
         _backgroundImage.transform.GetChild(0).gameObject.SetActive(false);
         _backgroundImage.GetComponent<Animator>().SetBool("FadeOut", true);
         Invoke("BeginGame", 3);

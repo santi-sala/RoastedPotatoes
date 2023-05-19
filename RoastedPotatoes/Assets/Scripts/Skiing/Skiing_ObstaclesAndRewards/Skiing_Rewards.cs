@@ -13,6 +13,7 @@ public class Skiing_Rewards : MonoBehaviour
 
     private void Start()
     {
+        pointsCount = 0;
         pointsText = GameObject.Find("Points");
         UpdatePoints();
     }

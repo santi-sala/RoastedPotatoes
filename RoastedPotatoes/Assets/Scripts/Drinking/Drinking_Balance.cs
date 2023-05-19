@@ -125,7 +125,7 @@ public class Drinking_Balance : MonoBehaviour
             Invoke("StartEndingSequence", 0.5f);
         }
 
-        if (jeansAngle > 80 || jeansAngle < -80)
+        if (jeansAngle > 60 || jeansAngle < -60)
         {
             End();
         }

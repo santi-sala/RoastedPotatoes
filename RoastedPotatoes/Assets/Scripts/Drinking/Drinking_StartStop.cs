@@ -30,6 +30,7 @@ public class Drinking_StartStop : MonoBehaviour
 
     void BeginStartGame(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
+        _playerActions.ControlScheme.Interaction.started -= BeginStartGame;
         _drinkingText.SetActive(false);
         _canvasBackgroundAnimator.SetBool("FadeOut", true);
         Invoke("StartGame", 3);
@@ -38,11 +39,13 @@ public class Drinking_StartStop : MonoBehaviour
     void StartGame()
     {
         _balance.gameOn = true;
+        Drinking_Score.startScore = true;
     }
 
     public void BeginEndGame()
     {
         _canvasBackgroundAnimator.SetBool("FadeOut", false);
+        Drinking_Score.startScore = false;
         Invoke("EndGame", 5);
     }
 
