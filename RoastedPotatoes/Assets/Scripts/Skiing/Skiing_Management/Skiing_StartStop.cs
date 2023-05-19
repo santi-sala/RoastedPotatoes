@@ -17,7 +17,7 @@ public class Skiing_StartStop : MonoBehaviour
     Skiing_Hits _skiiHits;
     GameObject _player;
 
-
+    MusicFade _music;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +27,7 @@ public class Skiing_StartStop : MonoBehaviour
 
         _playerActions.ControlScheme.Interaction.started += StartBeginningSequence;
 
+        _music = GameObject.FindObjectOfType<MusicFade>();
 
         _skiiCamera = GameObject.FindObjectOfType<Skiing_CameraFollow>();
         _skiiMovement = GameObject.FindObjectOfType<Skiing_Movement>();
@@ -63,6 +64,7 @@ public class Skiing_StartStop : MonoBehaviour
 
     void EndGame()
     {
+        _music.FadeMusic();
         _player.GetComponent<World_ActivityInteraction>().WorldLoadPrep();
     }
 

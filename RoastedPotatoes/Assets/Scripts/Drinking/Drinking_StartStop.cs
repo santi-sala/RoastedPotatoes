@@ -13,11 +13,15 @@ public class Drinking_StartStop : MonoBehaviour
 
     [SerializeField] GameObject _drinkingText;
 
+    MusicFade _music;
+
     // Start is called before the first frame update
     void Start()
     {
         _playerActions = new DefaultInput();
         _playerActions.Enable();
+
+        _music = GameObject.FindObjectOfType<MusicFade>();
 
         _player = GameObject.Find("PlayerRoot");
         _drinkingText = GameObject.Find("DrinkingText");
@@ -51,6 +55,7 @@ public class Drinking_StartStop : MonoBehaviour
 
     void EndGame()
     {
+        _music.FadeMusic();
         _player.GetComponent<World_ActivityInteraction>().WorldLoadPrep();
     }
 }

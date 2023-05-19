@@ -15,6 +15,8 @@ public class World_ActivitySwapper : MonoBehaviour
 
         SceneManager.LoadSceneAsync("TransitioningScene", LoadSceneMode.Additive);
 
+        GameObject.FindObjectOfType<MusicFade>().FadeMusic();
+
         StartCoroutine(DelayActivityLoad(loadedScene, activityScene));
     }
 
