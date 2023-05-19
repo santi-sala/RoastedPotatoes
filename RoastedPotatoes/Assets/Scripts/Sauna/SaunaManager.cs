@@ -23,6 +23,8 @@ public class SaunaManager : MonoBehaviour
     //private float _changeState = 5f;
     private bool _startTimer = false;
 
+    MusicFade _music;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -35,7 +37,9 @@ public class SaunaManager : MonoBehaviour
         Vihta.Instance.OnVihtaSucceed += Vihta_OnVihtaSucceed;
         ThrowWater.Instance.OnWaterSucceed += ThrowWater_OnWaterSucceed;
         UI_Starting.Instance.OnStartGame += UI_starting_OnStartGame;
-        
+
+        _music = GetComponent<MusicFade>();
+
         // Testing
         _currentState = State.Starting;
     }
@@ -70,12 +74,14 @@ public class SaunaManager : MonoBehaviour
 
         if (_startTimer)
         {
+            
             _currentTime -= Time.deltaTime;
             if (_currentTime < 0f)
             {            
                 Debug.Log("Finished!!");
                 _startTimer = false;
                 _currentState= State.Finished;
+                _music.FadeMusic();
                 OnStateChange?.Invoke(this, EventArgs.Empty);
                 //_changeState = 0;
             }
@@ -101,7 +107,7 @@ public class SaunaManager : MonoBehaviour
             _changeState = 5f;
         }
         */
-        Debug.Log(_currentState.ToString());        
+        //Debug.Log(_currentState.ToString());        
     }
 
     public float GetCurrentTime()
@@ -124,6 +130,7 @@ public class SaunaManager : MonoBehaviour
     public void ChangeStateToFinished()
     {
         _currentState = State.Finished;
+        _music.FadeMusic();
         OnStateChange?.Invoke(this, EventArgs.Empty);
     }
 }

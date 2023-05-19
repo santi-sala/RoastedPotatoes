@@ -16,9 +16,11 @@ public class ThrowWater : MonoBehaviour
     [SerializeField] private GameObject _middleTrigger;
     [SerializeField] private GameObject _backGround;
     private bool _canBePressed = false;
-    
 
-    private float _triggerSpeed = 0.04f;
+    [SerializeField] AudioClip _audioClip;
+    AudioSource _audioSource;
+
+    private float _triggerSpeed = 0.15f;
     private bool _isEnd;
     private int _goBack = 1;
     private int _timesItWasPressed = 0;
@@ -30,6 +32,7 @@ public class ThrowWater : MonoBehaviour
 
     private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         SaunaManager.Instance.OnStateChange += SaunaManager_OnStateChange;
         SaunaPlayerInput.Instance.OnInteractionPressed += SaunaPlayerInput_OnInteractionPressed;        
     }
@@ -47,6 +50,9 @@ public class ThrowWater : MonoBehaviour
             if (_canBePressed)
             {
                 _timesItWasPressed++;
+                //Audioclip
+
+                _audioSource.PlayOneShot(_audioClip);
             }
 
             if (_timesItWasPressed >= 3)
@@ -72,20 +78,24 @@ public class ThrowWater : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (_triggerMovement.transform.position.x >= 3)
+        if (SaunaManager.Instance.GetCurrentState() == STATE_IS_WATER)
         {
-            _isEnd = true;
-            _goBack = -1;
+
+            if (_triggerMovement.transform.position.x >= 3)
+            {
+                _isEnd = true;
+                _goBack = -1;
+            }
+            if (_triggerMovement.transform.position.x <= -3)
+            {
+                _isEnd = false;
+                _goBack = 1;
+            }
+            if (_isEnd) { }
+            _triggerMovement.transform.localPosition = new Vector3(_triggerMovement.transform.position.x + _triggerSpeed * _goBack, 0,0);
         }
-        if (_triggerMovement.transform.position.x <= -3)
-        {
-            _isEnd = false;
-            _goBack = 1;
-        }
-        if (_isEnd) { }
-        _triggerMovement.transform.position = new Vector3(_triggerMovement.transform.position.x + _triggerSpeed * _goBack, 0,0);
 
         //Debug.Log("Can be pressed: " + _canBePressed);
         //Debug.Log("Times pressed: " + _timesItWasPressed);
