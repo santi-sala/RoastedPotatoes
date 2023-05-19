@@ -9,7 +9,6 @@ public class DiscoManager : MonoBehaviour
 
     [SerializeField] private AudioSource _mainSong;
     //[SerializeField] private bool _startPlaying = false;
-    
 
     private int _currentScore;
     private int _scorePerNote = 100;

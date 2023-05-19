@@ -59,18 +59,17 @@ public class SaunaCharacter : MonoBehaviour
     {
         if (SaunaManager.Instance.GetCurrentState() == STATE_IS_WATER)
         { 
-            if (_isWater)
-            {
-                _saunaCharacterSpriteRender.sprite = _saunaCharacterSpritesList[1];
-                _isWater = false;
-            }
-            else
-            {
-                _saunaCharacterSpriteRender.sprite = _saunaCharacterSpritesList[0];
-                _isWater = true;
-            }
+            
+            _saunaCharacterSpriteRender.sprite = _saunaCharacterSpritesList[1];
+
+            StartCoroutine(DelayedIE());
         }
     }
 
-    
+    IEnumerator DelayedIE()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        _saunaCharacterSpriteRender.sprite = _saunaCharacterSpritesList[0];
+    }
 }

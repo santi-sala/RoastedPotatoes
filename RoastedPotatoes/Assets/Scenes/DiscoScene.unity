@@ -13385,6 +13385,8 @@ GameObject:
   - component: {fileID: 1037149325}
   - component: {fileID: 1037149324}
   - component: {fileID: 1037149326}
+  - component: {fileID: 1037149328}
+  - component: {fileID: 1037149327}
   m_Layer: 0
   m_Name: DiscoManager
   m_TagString: Untagged
@@ -13516,6 +13518,38 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &1037149327
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037149323}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9a15c765d498fd244b53c25d8b48e60a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &1037149328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037149323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d00d2803eef9b642a875feb2f354550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1052740203 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6524339416861032098, guid: 9ed8f29256e97c1469aacff938effdcd, type: 3}
@@ -16976,7 +17010,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1359083176}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.1, y: 11.8, z: 0}
+  m_LocalPosition: {x: 4.1, y: 375.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

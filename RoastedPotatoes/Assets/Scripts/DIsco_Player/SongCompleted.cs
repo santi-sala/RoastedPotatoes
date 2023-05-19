@@ -33,6 +33,7 @@ public class SongCompleted : MonoBehaviour
 
     private void LoadWorld()
     {
+        GameObject.FindObjectOfType<MusicFade>().FadeMusic();
         GameObject.Find("PlayerRoot").GetComponent<World_ActivityInteraction>().WorldLoadPrep();
     }
 

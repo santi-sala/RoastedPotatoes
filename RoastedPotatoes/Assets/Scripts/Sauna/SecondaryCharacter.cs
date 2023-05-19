@@ -72,12 +72,12 @@ public class SecondaryCharacter : MonoBehaviour
 
         _finishGame++;
 
-        Debug.Log("Finish game is:" + _finishGame);
+        //Debug.Log("Finish game is:" + _finishGame);
         if (_removeColorBlue <= 0 && _removeColorGreen <= 0)
         {
             if (_finishGame >= 5)
             {
-                Debug.Log("Game is completed");
+                //Debug.Log("Game is completed");
 
                 SaunaManager.Instance.ChangeStateToFinished();
             }
