@@ -11,15 +11,17 @@ public class SaunaManager : MonoBehaviour
     public event EventHandler OnStateChange;
     private enum State
     {
+        Starting,
         Water,
-        Vihta
+        Vihta,
+        Finished
     }
     
     [SerializeField] private float _maxTimer;
     private float _currentTime = 0.0f;
+    private State _currentState = State.Starting;
     //private float _changeState = 5f;
-    private State _currentState = State.Water;
-    //private bool _isPlaying;
+    private bool _startTimer = false;
 
     // Start is called before the first frame update
     void Awake()
@@ -32,9 +34,16 @@ public class SaunaManager : MonoBehaviour
         _currentTime = _maxTimer;
         Vihta.Instance.OnVihtaSucceed += Vihta_OnVihtaSucceed;
         ThrowWater.Instance.OnWaterSucceed += ThrowWater_OnWaterSucceed;
+        UI_Starting.Instance.OnStartGame += UI_starting_OnStartGame;
         
         // Testing
+        _currentState = State.Starting;
+    }
+
+    private void UI_starting_OnStartGame(object sender, EventArgs e)
+    {
         _currentState = State.Water;
+        _startTimer = true;
     }
 
     private void ThrowWater_OnWaterSucceed(object sender, EventArgs e)
@@ -49,14 +58,28 @@ public class SaunaManager : MonoBehaviour
         OnStateChange?.Invoke(this, EventArgs.Empty);
     }
 
+    
+
     // Update is called once per frame
     void Update()
     {
-        _currentTime -= Time.deltaTime;
-        if (_currentTime < 0f)
-        {            
-            //Debug.Log("Finished!!");
-            //_changeState = 0;
+        if (_currentState == State.Starting)
+        {
+            return;
+        }
+
+        if (_startTimer)
+        {
+            _currentTime -= Time.deltaTime;
+            if (_currentTime < 0f)
+            {            
+                Debug.Log("Finished!!");
+                _startTimer = false;
+                _currentState= State.Finished;
+                OnStateChange?.Invoke(this, EventArgs.Empty);
+                //_changeState = 0;
+            }
+
         }
         /*
         _changeState -= Time.deltaTime;
@@ -78,7 +101,7 @@ public class SaunaManager : MonoBehaviour
             _changeState = 5f;
         }
         */
-        //Debug.Log(_currentState.ToString());        
+        Debug.Log(_currentState.ToString());        
     }
 
     public float GetCurrentTime()
@@ -90,5 +113,17 @@ public class SaunaManager : MonoBehaviour
     {
         //Debug.Log("State is: " + _currentState.ToString());
         return _currentState.ToString();
+    }
+
+    public void ChangeStateToWater()
+    {
+        _currentState= State.Water;
+        OnStateChange?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void ChangeStateToFinished()
+    {
+        _currentState = State.Finished;
+        OnStateChange?.Invoke(this, EventArgs.Empty);
     }
 }
