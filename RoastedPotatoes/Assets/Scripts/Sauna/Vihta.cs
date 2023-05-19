@@ -14,6 +14,7 @@ public class Vihta : MonoBehaviour
 
     [SerializeField] private Image _vihtaFiller;
     private float _addTofiller = 0.1f;
+    //private bool _invokeJustOnce = true;
 
     private void Awake()
     {
@@ -29,12 +30,21 @@ public class Vihta : MonoBehaviour
 
     private void SaunaPlayerInput_OnAlternatePressed(object sender, System.EventArgs e)
     {
-        _vihtaFiller.fillAmount = _vihtaFiller.fillAmount + _addTofiller;
-
         if (_vihtaFiller.fillAmount >= 1)
         {
-            _addTofiller -= 0.02f;
-            OnVihtaSucceed?.Invoke(this, EventArgs.Empty);
+            _vihtaFiller.fillAmount = 1;
+            return;
+        }
+        if (SaunaManager.Instance.GetCurrentState() == STATE_IS_VIHTA)
+        {            
+            _vihtaFiller.fillAmount = _vihtaFiller.fillAmount + _addTofiller;
+
+            if (_vihtaFiller.fillAmount >= 1)
+            {
+                _vihtaFiller.fillAmount = 1;
+                _addTofiller -= 0.01f;
+                OnVihtaSucceed?.Invoke(this, EventArgs.Empty);
+            }
         }
     }
 
@@ -47,8 +57,9 @@ public class Vihta : MonoBehaviour
         }
         else
         {
-            Hide();
             _vihtaFiller.fillAmount = 0;
+            //_invokeJustOnce = true;
+            Hide();
         }
     }
 
