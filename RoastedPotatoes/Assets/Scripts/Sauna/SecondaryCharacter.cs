@@ -5,22 +5,78 @@ using UnityEngine;
 public class SecondaryCharacter : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _secondaryCharacterSpriteRenderer;
-    [SerializeField]private int _removeFromColor = 100;
-    private int _greenBlueColor = 255;
+    [SerializeField]private int _removeFromColor = 255;
+    private int _removeColorGreen = 255;
+    private int _removeColorBlue = 255;
+
+    [SerializeField] private GameObject _swearingBubble;        
+    private float _hideSwearingBubbleMax = 2f;
+    private float _hideSwearingBubble;
+    private bool _isSwearingBubbleVisible = false;
 
     private void Start()
     {
         Vihta.Instance.OnVihtaSucceed += Vihta_OnVihtaSucceed;
+        ThrowWater.Instance.OnWaterSucceed += ThrowWater_OnWaterSucceed;
+        _hideSwearingBubble = _hideSwearingBubbleMax;
+        _swearingBubble.SetActive(false);
+    }
+
+    private void ThrowWater_OnWaterSucceed(object sender, System.EventArgs e)
+    {
+        MakeCharactersMoreRed();
     }
 
     private void Vihta_OnVihtaSucceed(object sender, System.EventArgs e)
     {
-        _greenBlueColor -= _removeFromColor;
+        MakeCharactersMoreRed();
+    }
 
-        if (_greenBlueColor <= 0)
+    private void Update()
+    {
+        if (_isSwearingBubbleVisible)
         {
-            _greenBlueColor = 0;
+            _hideSwearingBubble = _hideSwearingBubble - Time.deltaTime;
+
+            if (_hideSwearingBubble <= 0)
+            {
+                _isSwearingBubbleVisible = false;
+                _hideSwearingBubble = _hideSwearingBubbleMax;
+                _swearingBubble.SetActive(false);
+            }
         }
-        _secondaryCharacterSpriteRenderer.color = new Color(255, _greenBlueColor, _greenBlueColor);
+    }
+
+    private void MakeCharactersMoreRed()
+    {
+        _removeColorGreen -= _removeFromColor;
+
+        if (_removeColorGreen <= 0)
+        {
+            _removeColorGreen = 0;
+            _removeColorBlue -= _removeFromColor;
+
+            if (_removeColorBlue <= 0)
+            {
+                _removeColorBlue = 0;
+            }
+
+        }
+        _secondaryCharacterSpriteRenderer.color = new Color(255, _removeColorGreen, _removeColorBlue);
+        Debug.Log(_secondaryCharacterSpriteRenderer.color);
+        _swearingBubble.SetActive(true);
+        _isSwearingBubbleVisible = true;
+
+        if (_removeColorBlue <= 0 && _removeColorGreen <= 0)
+        {
+            Vihta.Instance.OnVihtaSucceed -= Vihta_OnVihtaSucceed;
+            ThrowWater.Instance.OnWaterSucceed -= ThrowWater_OnWaterSucceed;
+            Invoke("DestroyCharacter", 4);
+        }
+    }
+
+    private void DestroyCharacter()
+    {
+        Destroy(gameObject);
     }
 }

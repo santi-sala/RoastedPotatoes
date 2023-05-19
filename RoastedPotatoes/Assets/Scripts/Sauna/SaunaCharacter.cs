@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SaunaCharacter : MonoBehaviour
 {
+    private const string STATE_IS_VIHTA = "Vihta";
+    private const string STATE_IS_WATER = "Water";
+
     [SerializeField] private GameObject _mainCharacter;
     [SerializeField] private SpriteRenderer _saunaCharacterSpriteRender;
     [SerializeField] private Sprite[] _saunaCharacterSpritesList;
@@ -16,48 +19,58 @@ public class SaunaCharacter : MonoBehaviour
     void Start()
     {
         SaunaPlayerInput.Instance.OnInteractionPressed += SaunaPlayerInput_OnInteractionPressed;
-        SaunaPlayerInput.Instance.OnAlternatePressed += SaunaPlayerPressed;
+        SaunaPlayerInput.Instance.OnAlternatePressed += SaunaPlayerInput_OnAlternatePressed;
+        SaunaManager.Instance.OnStateChange += SaunaManager_OnStateChange;
 
         _saunaCharacterSpriteRender = _mainCharacter.GetComponent<SpriteRenderer>();
         _saunaCharacterSpriteRender.sprite = _saunaCharacterSpritesList[_indexSpritesList];
     }
 
-    private void SaunaPlayerPressed(object sender, System.EventArgs e)
+    private void SaunaManager_OnStateChange(object sender, System.EventArgs e)
     {
-        if (_isVihtaUp)
+        if (SaunaManager.Instance.GetCurrentState() == STATE_IS_WATER)
+        {
+            _saunaCharacterSpriteRender.sprite = _saunaCharacterSpritesList[0];
+        }
+        if (SaunaManager.Instance.GetCurrentState() == STATE_IS_VIHTA)
         {
             _saunaCharacterSpriteRender.sprite = _saunaCharacterSpritesList[2];
-            _isVihtaUp = false;
         }
-        else
+    }
+
+    private void SaunaPlayerInput_OnAlternatePressed(object sender, System.EventArgs e)
+    {
+        if (SaunaManager.Instance.GetCurrentState() == STATE_IS_VIHTA)
         {
-            _saunaCharacterSpriteRender.sprite = _saunaCharacterSpritesList[3];
-            _isVihtaUp = true;
+            if (_isVihtaUp)
+            {
+                _saunaCharacterSpriteRender.sprite = _saunaCharacterSpritesList[2];
+                _isVihtaUp = false;
+            }
+            else
+            {
+                _saunaCharacterSpriteRender.sprite = _saunaCharacterSpritesList[3];
+                _isVihtaUp = true;
+            }
         }
     }
 
     private void SaunaPlayerInput_OnInteractionPressed(object sender, System.EventArgs e)
     {
-
-        if (_isWater)
-        {
-            _saunaCharacterSpriteRender.sprite = _saunaCharacterSpritesList[1];
-            _isWater = false;
-        }
-        else
-        {
-            _saunaCharacterSpriteRender.sprite = _saunaCharacterSpritesList[0];
-            _isWater = true;
-        }
-      //CheckCurrentIndex();
-    }
-
-    private void CheckCurrentIndex()
-    {
-        if (_indexSpritesList > _saunaCharacterSpritesList.Length - 1)
-        {
-            _indexSpritesList = 0;
+        if (SaunaManager.Instance.GetCurrentState() == STATE_IS_WATER)
+        { 
+            if (_isWater)
+            {
+                _saunaCharacterSpriteRender.sprite = _saunaCharacterSpritesList[1];
+                _isWater = false;
+            }
+            else
+            {
+                _saunaCharacterSpriteRender.sprite = _saunaCharacterSpritesList[0];
+                _isWater = true;
+            }
         }
     }
+
     
 }

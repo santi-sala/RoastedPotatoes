@@ -32,7 +32,7 @@ public class SaunaPlayerInput : MonoBehaviour
 
     private void Interaction_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        ThrowWater.Instance.ChangeSpeed();
+        //ThrowWater.Instance.ChangeSpeed();
         OnInteractionPressed?.Invoke(this, EventArgs.Empty);
     }
 }
