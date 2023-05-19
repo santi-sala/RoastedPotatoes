@@ -87,8 +87,8 @@ public class ThrowWater : MonoBehaviour
         if (_isEnd) { }
         _triggerMovement.transform.position = new Vector3(_triggerMovement.transform.position.x + _triggerSpeed * _goBack, 0,0);
 
-        Debug.Log("Can be pressed: " + _canBePressed);
-        Debug.Log("Times pressed: " + _timesItWasPressed);
+        //Debug.Log("Can be pressed: " + _canBePressed);
+        //Debug.Log("Times pressed: " + _timesItWasPressed);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

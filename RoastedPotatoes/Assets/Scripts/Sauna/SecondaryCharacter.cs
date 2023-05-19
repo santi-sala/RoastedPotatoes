@@ -14,6 +14,8 @@ public class SecondaryCharacter : MonoBehaviour
     private float _hideSwearingBubble;
     private bool _isSwearingBubbleVisible = false;
 
+    private int _finishGame = 0;
+
     private void Start()
     {
         Vihta.Instance.OnVihtaSucceed += Vihta_OnVihtaSucceed;
@@ -63,16 +65,27 @@ public class SecondaryCharacter : MonoBehaviour
 
         }
         _secondaryCharacterSpriteRenderer.color = new Color(255, _removeColorGreen, _removeColorBlue);
-        Debug.Log(_secondaryCharacterSpriteRenderer.color);
+        //Debug.Log(_secondaryCharacterSpriteRenderer.color);
         _swearingBubble.SetActive(true);
         _isSwearingBubbleVisible = true;
 
+        _finishGame++;
+
+        Debug.Log("Finish game is:" + _finishGame);
         if (_removeColorBlue <= 0 && _removeColorGreen <= 0)
         {
+            if (_finishGame >= 5)
+            {
+                Debug.Log("Game is completed");
+            }
             Vihta.Instance.OnVihtaSucceed -= Vihta_OnVihtaSucceed;
             ThrowWater.Instance.OnWaterSucceed -= ThrowWater_OnWaterSucceed;
-            Invoke("DestroyCharacter", 4);
+
+
+            Invoke("DestroyCharacter", 3);
         }
+
+
     }
 
     private void DestroyCharacter()

@@ -78,7 +78,7 @@ public class SaunaManager : MonoBehaviour
             _changeState = 5f;
         }
         */
-        Debug.Log(_currentState.ToString());        
+        //Debug.Log(_currentState.ToString());        
     }
 
     public float GetCurrentTime()
@@ -88,7 +88,7 @@ public class SaunaManager : MonoBehaviour
 
     public string GetCurrentState()
     {
-        Debug.Log("State is: " + _currentState.ToString());
+        //Debug.Log("State is: " + _currentState.ToString());
         return _currentState.ToString();
     }
 }

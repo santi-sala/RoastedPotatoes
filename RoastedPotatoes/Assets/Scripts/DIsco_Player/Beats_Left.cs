@@ -47,7 +47,7 @@ public class Beats_Left : MonoBehaviour
         {
             PlayerInput.Instance.OnLeftPressed -= Instance_OnLeftPressed;
             _canBepressed = false;
-            Debug.Log("It can be pressed");
+            //Debug.Log("It can be pressed");
             DiscoManager.Instance.NoteHit();
             //gameObject.SetActive(false);
             Destroy(gameObject);

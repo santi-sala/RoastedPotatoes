@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TransitioningScene.unity
     guid: 386bae1b137753c44a829054bccb7eef
+  - enabled: 1
+    path: Assets/Scenes/Sauna.unity
+    guid: e5dd81b1fbdff9c4c889124970e8861a
   m_configObjects: {}
