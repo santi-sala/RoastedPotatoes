@@ -5,6 +5,7 @@ using UnityEngine;
 public class SecondaryCharacter : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _secondaryCharacterSpriteRenderer;
+    [SerializeField] private GameObject _CompletedUI;
     [SerializeField]private int _removeFromColor = 255;
     private int _removeColorGreen = 255;
     private int _removeColorBlue = 255;
@@ -77,6 +78,8 @@ public class SecondaryCharacter : MonoBehaviour
             if (_finishGame >= 5)
             {
                 Debug.Log("Game is completed");
+
+                SaunaManager.Instance.ChangeStateToFinished();
             }
             Vihta.Instance.OnVihtaSucceed -= Vihta_OnVihtaSucceed;
             ThrowWater.Instance.OnWaterSucceed -= ThrowWater_OnWaterSucceed;
